@@ -1,0 +1,3 @@
+# Chartroom ships as one standard-library Python file, so the program itself has
+# no third-party dependencies. pytest is the runner for the suite in tests/.
+pytest==8.4.2

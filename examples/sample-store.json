@@ -1,0 +1,312 @@
+{
+  "schema_version": 1,
+  "charts": [
+    {
+      "number": "1234",
+      "title": "Solent Approach",
+      "region": "Solent",
+      "scale": 25000,
+      "added_at": "2024-06-01T08:00:00Z"
+    },
+    {
+      "number": "1236",
+      "title": "The Needles",
+      "region": "West Solent",
+      "scale": 25000,
+      "added_at": "2024-06-01T08:07:00Z"
+    },
+    {
+      "number": "1237",
+      "title": "Portsmouth Harbour",
+      "region": "Solent",
+      "scale": 12500,
+      "added_at": "2024-06-01T08:14:00Z"
+    },
+    {
+      "number": "2454",
+      "title": "Cowes Harbour",
+      "region": "Solent",
+      "scale": 5000,
+      "added_at": "2024-06-01T08:21:00Z"
+    },
+    {
+      "number": "2036",
+      "title": "Start Point to Land's End",
+      "region": "West Country",
+      "scale": 200000,
+      "added_at": "2024-06-02T08:28:00Z"
+    },
+    {
+      "number": "2045",
+      "title": "Portland to Start Point",
+      "region": "West Country",
+      "scale": 75000,
+      "added_at": "2024-06-02T08:35:00Z"
+    },
+    {
+      "number": "2265",
+      "title": "Plymouth Harbour",
+      "region": "Plymouth",
+      "scale": 20000,
+      "added_at": "2024-06-02T08:42:00Z"
+    },
+    {
+      "number": "BA2450",
+      "title": "Falmouth to Fowey",
+      "region": "Cornwall",
+      "scale": 50000,
+      "added_at": "2024-06-02T08:49:00Z"
+    },
+    {
+      "number": "1121",
+      "title": "Cherbourg and Approaches",
+      "region": "Normandy",
+      "scale": 30000,
+      "added_at": "2024-06-03T08:56:00Z"
+    },
+    {
+      "number": "2656",
+      "title": "Alderney and the Casquets",
+      "region": "Channel Islands",
+      "scale": 25000,
+      "added_at": "2024-06-03T08:03:00Z"
+    },
+    {
+      "number": "2182C",
+      "title": "Bill of Portland to Anvil Point",
+      "region": "Dorset",
+      "scale": 150000,
+      "added_at": "2024-06-03T08:10:00Z"
+    },
+    {
+      "number": "GB401234",
+      "title": "Approaches to Southampton (ENC)",
+      "region": "Solent",
+      "scale": 45000,
+      "added_at": "2024-06-03T08:17:00Z"
+    }
+  ],
+  "courses": [
+    {
+      "name": "Solent Training Run",
+      "chart_number": "1234",
+      "created_at": "2024-06-10T09:00:00Z",
+      "updated_at": "2024-06-20T18:00:00Z",
+      "waypoints": [
+        {
+          "seq": 1,
+          "name": "Chichester Bar",
+          "latitude": 50.731,
+          "longitude": -0.942
+        },
+        {
+          "seq": 2,
+          "name": "Nab Tower",
+          "latitude": 50.6725,
+          "longitude": -0.9825
+        },
+        {
+          "seq": 3,
+          "name": "Cowes Roads",
+          "latitude": 50.757,
+          "longitude": -1.295
+        },
+        {
+          "seq": 4,
+          "name": "Lymington",
+          "latitude": 50.728,
+          "longitude": -1.53
+        }
+      ]
+    },
+    {
+      "name": "Needles Passage",
+      "chart_number": "1236",
+      "created_at": "2024-06-14T09:11:00Z",
+      "updated_at": "2024-06-23T18:13:00Z",
+      "waypoints": [
+        {
+          "seq": 1,
+          "name": "Yarmouth",
+          "latitude": 50.705,
+          "longitude": -1.506
+        },
+        {
+          "seq": 2,
+          "name": "Needles Fairway",
+          "latitude": 50.6758,
+          "longitude": -1.581
+        },
+        {
+          "seq": 3,
+          "name": "Bridge Buoy",
+          "latitude": 50.682,
+          "longitude": -1.63
+        }
+      ]
+    },
+    {
+      "name": "Channel Crossing",
+      "chart_number": "1121",
+      "created_at": "2024-06-18T09:22:00Z",
+      "updated_at": "2024-06-26T18:26:00Z",
+      "waypoints": [
+        {
+          "seq": 1,
+          "name": "Cowes",
+          "latitude": 50.762,
+          "longitude": -1.298
+        },
+        {
+          "seq": 2,
+          "name": "Bembridge Ledge",
+          "latitude": 50.68,
+          "longitude": -1.09
+        },
+        {
+          "seq": 3,
+          "name": "Cherbourg",
+          "latitude": 49.645,
+          "longitude": -1.62
+        }
+      ]
+    },
+    {
+      "name": "Plymouth Approach",
+      "chart_number": "2265",
+      "created_at": "2024-06-22T09:33:00Z",
+      "updated_at": "2024-06-29T18:39:00Z",
+      "waypoints": [
+        {
+          "seq": 1,
+          "name": "Eddystone",
+          "latitude": 50.18,
+          "longitude": -4.267
+        },
+        {
+          "seq": 2,
+          "name": "Penlee Point",
+          "latitude": 50.32,
+          "longitude": -4.19
+        },
+        {
+          "seq": 3,
+          "name": "Plymouth Sound",
+          "latitude": 50.36,
+          "longitude": -4.14
+        }
+      ]
+    }
+  ],
+  "tides": [
+    {
+      "id": 1,
+      "station": "Portsmouth",
+      "time": "2024-06-01T09:00",
+      "height_m": 2.4
+    },
+    {
+      "id": 2,
+      "station": "Portsmouth",
+      "time": "2024-06-01T15:00",
+      "height_m": 3.9
+    },
+    {
+      "id": 3,
+      "station": "Portsmouth",
+      "time": "2024-06-01T21:30",
+      "height_m": 1.1
+    },
+    {
+      "id": 4,
+      "station": "Portsmouth",
+      "time": "2024-06-02T03:15",
+      "height_m": -0.4
+    },
+    {
+      "id": 5,
+      "station": "Portsmouth",
+      "time": "2024-06-02T09:45",
+      "height_m": 2.2
+    },
+    {
+      "id": 6,
+      "station": "Cowes",
+      "time": "2024-06-01T10:10",
+      "height_m": 2.7
+    },
+    {
+      "id": 7,
+      "station": "Cowes",
+      "time": "2024-06-01T16:20",
+      "height_m": 4.1
+    },
+    {
+      "id": 8,
+      "station": "Cowes",
+      "time": "2024-06-02T04:30",
+      "height_m": -0.1
+    },
+    {
+      "id": 9,
+      "station": "Cowes",
+      "time": "2024-06-02T10:55",
+      "height_m": 2.5
+    },
+    {
+      "id": 10,
+      "station": "Cowes",
+      "time": "2024-06-08T11:40",
+      "height_m": 2.9
+    },
+    {
+      "id": 11,
+      "station": "Lymington",
+      "time": "2024-06-01T11:05",
+      "height_m": 1.8
+    },
+    {
+      "id": 12,
+      "station": "Lymington",
+      "time": "2024-06-01T17:35",
+      "height_m": 3.2
+    },
+    {
+      "id": 13,
+      "station": "Lymington",
+      "time": "2024-06-03T05:20",
+      "height_m": 0.0
+    },
+    {
+      "id": 14,
+      "station": "Lymington",
+      "time": "2024-06-03T11:50",
+      "height_m": 1.6
+    },
+    {
+      "id": 15,
+      "station": "Poole",
+      "time": "2024-06-04T06:10",
+      "height_m": 0.3
+    },
+    {
+      "id": 16,
+      "station": "Poole",
+      "time": "2024-06-04T12:30",
+      "height_m": 1.9
+    },
+    {
+      "id": 17,
+      "station": "Poole",
+      "time": "2024-06-05T07:05",
+      "height_m": -0.2
+    },
+    {
+      "id": 18,
+      "station": "Poole",
+      "time": "2024-06-05T13:25",
+      "height_m": 1.7
+    }
+  ],
+  "next_tide_id": 19
+}
