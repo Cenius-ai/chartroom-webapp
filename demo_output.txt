@@ -1,0 +1,154 @@
+Chartroom offline demo
+store: /tmp/cr-demo.json (throwaway file - /root/.chartroom/store.json is never touched)
+network: not used by any command below
+
+== 1. inventory the charts aboard ==
+
+$ python3 chartroom.py charts add --number 1234 --title Solent Approach --region Solent --scale 25000 --store /tmp/cr-demo.json
+added chart 1234: Solent Approach (region Solent, scale 25000)
+[exit 0]
+
+$ python3 chartroom.py charts add --number 1236 --title The Needles --region West Solent --scale 25000 --store /tmp/cr-demo.json
+added chart 1236: The Needles (region West Solent, scale 25000)
+[exit 0]
+
+$ python3 chartroom.py charts add --number BA2450 --title Falmouth to Fowey --region Cornwall --scale 50000 --store /tmp/cr-demo.json
+added chart BA2450: Falmouth to Fowey (region Cornwall, scale 50000)
+[exit 0]
+
+$ python3 chartroom.py charts list --store /tmp/cr-demo.json
+  NUMBER  TITLE              REGION       SCALE
+  ──────  ─────────────────  ───────────  ─────
+  1234    Solent Approach    Solent       25000
+  1236    The Needles        West Solent  25000
+  BA2450  Falmouth to Fowey  Cornwall     50000
+  ──────  ─────────────────  ───────────  ─────
+3 charts
+[exit 0]
+
+== 2. plot a course and read its great-circle legs ==
+
+$ python3 chartroom.py course plot --name Solent Training Run --chart 1234 --waypoint Chichester Bar:50.73100,-0.94200 --waypoint Nab Tower:50.67250,-0.98250 --waypoint Cowes Roads:50.75700,-1.29500 --waypoint Lymington:50.72800,-1.53000 --store /tmp/cr-demo.json
+plotted Solent Training Run with 4 waypoints
+chart 1234
+
+leg 1  Chichester Bar -> Nab Tower  3.84 nm   bearing 203.7° true
+leg 2  Nab Tower -> Cowes Roads     12.92 nm   bearing 293.2° true
+leg 3  Cowes Roads -> Lymington     9.10 nm   bearing 259.1° true
+total distance 25.86 nm
+[exit 0]
+
+$ python3 chartroom.py course plot --name Needles Passage --chart 1236 --waypoint Yarmouth:50.70500,-1.50600 --waypoint Needles Fairway:50.67580,-1.58100 --waypoint Bridge Buoy:50.68200,-1.63000 --store /tmp/cr-demo.json
+plotted Needles Passage with 3 waypoints
+chart 1236
+
+leg 1  Yarmouth -> Needles Fairway     3.35 nm   bearing 238.5° true
+leg 2  Needles Fairway -> Bridge Buoy  1.90 nm   bearing 281.3° true
+total distance 5.25 nm
+[exit 0]
+
+$ python3 chartroom.py course list --store /tmp/cr-demo.json
+  COURSE               WAYPOINTS    CHART
+  ───────────────────  ───────────  ─────
+  Needles Passage      3 waypoints  1236
+  Solent Training Run  4 waypoints  1234
+  ───────────────────  ───────────  ─────
+2 courses
+[exit 0]
+
+$ python3 chartroom.py course show --name Solent Training Run --store /tmp/cr-demo.json
+name Solent Training Run
+chart 1234
+4 waypoints
+created 2026-10-11T21:59:28Z
+updated 2026-10-11T21:59:28Z
+
+waypoint 1  Chichester Bar  50.73100, -0.94200
+waypoint 2  Nab Tower       50.67250, -0.98250
+waypoint 3  Cowes Roads     50.75700, -1.29500
+waypoint 4  Lymington       50.72800, -1.53000
+
+leg 1  Chichester Bar -> Nab Tower  3.84 nm   bearing 203.7° true
+leg 2  Nab Tower -> Cowes Roads     12.92 nm   bearing 293.2° true
+leg 3  Cowes Roads -> Lymington     9.10 nm   bearing 259.1° true
+total distance 25.86 nm
+[exit 0]
+
+== 3. log observed tide heights ==
+
+$ python3 chartroom.py tide add --station Portsmouth --time 2024-06-01T03:00 --height -0.4 --store /tmp/cr-demo.json
+added tide entry 1: Portsmouth 2024-06-01T03:00 -0.40 m
+[exit 0]
+
+$ python3 chartroom.py tide add --station Portsmouth --time 2024-06-01T09:00 --height 2.4 --store /tmp/cr-demo.json
+added tide entry 2: Portsmouth 2024-06-01T09:00 2.40 m
+[exit 0]
+
+$ python3 chartroom.py tide add --station Cowes --time 2024-06-01T15:00 --height 3.1 --store /tmp/cr-demo.json
+added tide entry 3: Cowes 2024-06-01T15:00 3.10 m
+[exit 0]
+
+$ python3 chartroom.py tide list --store /tmp/cr-demo.json
+  ID  STATION     TIME              HEIGHT
+  ──  ──────────  ────────────────  ───────
+  1   Portsmouth  2024-06-01T03:00  -0.40 m
+  2   Portsmouth  2024-06-01T09:00  2.40 m
+  3   Cowes       2024-06-01T15:00  3.10 m
+  ──  ──────────  ────────────────  ───────
+3 tide entries
+[exit 0]
+
+== 4. failures print one line and exit 2, saving nothing ==
+
+$ python3 chartroom.py charts add --number 1234 --title Duplicate Chart --store /tmp/cr-demo.json
+error: chart 1234 already exists
+[exit 2]
+
+$ python3 chartroom.py course plot --name Off Soundings --waypoint Bell Rock:95.0,-1.0 --waypoint End:50.8,-1.6 --store /tmp/cr-demo.json
+error: waypoint 1 ('Bell Rock') latitude must be between -90 and 90 (got 95.0)
+[exit 2]
+
+$ python3 chartroom.py tide remove --id 99 --store /tmp/cr-demo.json
+error: tide entry 99 not found
+[exit 2]
+
+== 5. the command reference ==
+
+$ python3 chartroom.py --help
+usage: chartroom.py [-h] [--version] [--store PATH] [--json] [--no-color]
+                    {charts,course,tide} ...
+
+Chartroom keeps a local inventory of the nautical charts aboard, the courses plotted from them and a log of observed tide heights.
+
+positional arguments:
+  {charts,course,tide}
+    charts              chart inventory: add, list and remove charts aboard
+    course              course plotting: plot, list, show and remove courses
+    tide                tide table log: add, list and remove tide heights
+
+options:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+  --store PATH          JSON store file (default: ~/.chartroom/store.json, or
+                        $CHARTROOM_STORE)
+  --json                print machine-readable JSON instead of the human-
+                        readable table
+  --no-color            disable ANSI colour (NO_COLOR is honoured as well)
+
+examples:
+  python chartroom.py charts add --number 1234 --title 'Solent Approach' --region Solent --scale 25000
+  python chartroom.py charts list
+  python chartroom.py course plot --name Solent --chart 1234 --waypoint Start:50.70,-1.20 --waypoint Mid:50.75,-1.40 --waypoint End:50.80,-1.60
+  python chartroom.py course show --name Solent
+  python chartroom.py tide add --station Portsmouth --time 2024-06-01T09:00 --height 2.4
+  python chartroom.py tide list
+
+store:
+  the JSON store defaults to ~/.chartroom/store.json; use --store PATH or the
+  CHARTROOM_STORE variable to keep demos and checks away from real data.
+
+exit codes:
+  0 success | 1 unreadable or unwritable store | 2 usage or validation error
+[exit 0]
+
+Demo complete. The charts, courses and tides above are still in /tmp/cr-demo.json.
